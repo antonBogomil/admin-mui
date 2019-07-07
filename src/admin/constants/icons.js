@@ -1,0 +1,13 @@
+export const ICON_MAIL = "ICON_MAIL";
+export const ICON_INBOX = "ICON_INBOX";
+export const ICON_EXPANDED_LESS = "ICON_EX_L";
+export const ICON_EXPANDED_MORE = "ICON_EX_M";
+export const MENU_ICON_HOME = "MENU_ICON_HOME";
+export const MENU_ICON_UI = "MENU_ICON_UI";
+export const MENU_ICON_USERS = "MENU_ICON_USERS";
+export const MENU_ICON_ADD = "MENU_ICON_ADD";
+export const MENU_ICON_PAGES = "MENU_ICON_PAGES";
+export const MENU_ICON_FORMS = "MENU_ICON_FORMS";
+export const MENU_ICON_SETTINGS = "MENU_ICON_SETTINGS";
+export const MENU_ICON_DOC = "MENU_ICON_DOC";
+export const MENU_ICON_LIST = "MENU_ICON_LIST";
