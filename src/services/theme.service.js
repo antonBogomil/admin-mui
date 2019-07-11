@@ -1,4 +1,4 @@
-import themes from "../admin/settings/themes";
+import themes from "../settings/themes";
 import {createMuiTheme} from "@material-ui/core";
 
 const THEME_STORAGE_KEY = 'theme-admin';

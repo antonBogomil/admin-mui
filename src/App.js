@@ -3,19 +3,16 @@ import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch,} from "react-router-dom";
 import Admin from "./admin/Admin";
 import store from './store';
-import initTranslation from "./admin/i18n";
-import PrivateRoute from "./admin/PrivateRoute";
-import Login from "./admin/components/Login";
-import Main from "./components/Main";
+import initTranslation from "./i18n";
+import Home from "./site/Home";
 initTranslation(store.getState().site.lang);
 const App = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/admin/login' component={Login}/>
-                    <PrivateRoute path='/admin' component={Admin}/>
-                    <Route path='/' component={Main}/>
+                    <Route path='/admin' component={Admin}/>
+                    <Route path='/' component={Home}/>
                 </Switch>
             </BrowserRouter>
         </Provider>

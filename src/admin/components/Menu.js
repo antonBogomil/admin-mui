@@ -4,11 +4,11 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
 import Icon from "./Icon";
-import {ICON_EXPANDED_LESS, ICON_EXPANDED_MORE} from "../constants/icons";
+import {ICON_EXPANDED_LESS, ICON_EXPANDED_MORE} from "../../constants/icons";
 import {ListItemIcon} from "@material-ui/core";
 import withStyles from "@material-ui/styles/withStyles";
 import classNames from 'classnames';
-import {menuStyles} from "../styles/menu.styles";
+import {menuStyle} from "../styles/menu.style";
 import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 const Menu = ({data, depth = 0, classes, parentUrl = ''}) => {
@@ -89,4 +89,4 @@ const ListItemLink = (props) => {
         </NavLink>
     )
 };
-export default withStyles(menuStyles)(Menu);
+export default withStyles(menuStyle)(Menu);

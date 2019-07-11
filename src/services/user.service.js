@@ -24,8 +24,8 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function getList(url, params) {
-    return _httpRequest.get(url, params)
+function getList(params) {
+    return _httpRequest.get('/users', params)
 }
 
 

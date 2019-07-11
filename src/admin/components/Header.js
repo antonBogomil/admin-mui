@@ -1,12 +1,10 @@
 import React from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
-import useStyles from "../styles";
 import {withStyles} from "@material-ui/styles";
-import {mainStyles} from "../styles/main.styles";
+import {mainStyle} from "../styles/main.style";
+import LanguagePanel from "./LanguagePanel";
 
 const Header = (props) => {
     const {classes,handleDrawerToggle} = props;
@@ -14,22 +12,27 @@ const Header = (props) => {
         <>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        className={classes.menuButton}
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Responsive drawer
-                    </Typography>
+                    {/*<IconButton*/}
+                        {/*color="inherit"*/}
+                        {/*aria-label="Open drawer"*/}
+                        {/*edge="start"*/}
+                        {/*onClick={handleDrawerToggle}*/}
+                        {/*className={classes.menuButton}*/}
+                    {/*>*/}
+                        {/*<MenuIcon/>*/}
+                    {/*</IconButton>*/}
+                    <div className={classes.header}>
+                        <Typography variant="h6" noWrap>
+                            Responsive drawer
+                        </Typography>
+                        <div className={classes.headerRight}>
+                            <LanguagePanel/>
+                        </div>
+                    </div>
                 </Toolbar>
             </AppBar>
         </>
     );
 };
 
-export default withStyles(mainStyles)(Header);
+export default withStyles(mainStyle)(Header);

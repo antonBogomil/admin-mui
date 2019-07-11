@@ -1,5 +1,5 @@
 import React from 'react';
-import icons from "../settings/icons";
+import icons from "../../settings/icons";
 
 const Icon = (props) => {
     const {name} = props;
