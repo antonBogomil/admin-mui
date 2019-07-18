@@ -16,6 +16,7 @@ export const mainStyle = (theme) => {
             [theme.breakpoints.up('sm')]: {
                 width: `calc(100% - ${drawerWidth}px)`,
             },
+            backgroundColor: theme.palette.secondary.main
         },
         menuButton: {
             marginRight: theme.spacing(2),
@@ -38,7 +39,7 @@ export const mainStyle = (theme) => {
             padding: theme.spacing(3),
         },
         button: {
-            display: 'block',
+            margin: theme.spacing(1),
             marginTop: theme.spacing(2),
         },
 
@@ -50,13 +51,33 @@ export const mainStyle = (theme) => {
             justifyContent: 'space-between'
         },
         textField: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            width: 200,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            maxWidth: 600,
+        },
+        formContainer: {
+            display: 'flex',
+            flexDirection: 'column'
+            // flexWrap: 'wrap'
         },
         formControl: {
             margin: theme.spacing(1),
             minWidth: 120,
         },
+        rootPageLogin: {
+            margin: 'auto',
+            maxWidth: 420,
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center'
+        },
+        paperPageLogin: {
+            padding: theme.spacing(1),
+        },
+        fixedLangPanel:{
+            position: 'fixed',
+            right: 10,
+        }
+
     }
 };

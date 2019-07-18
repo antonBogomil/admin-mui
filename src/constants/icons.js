@@ -1,5 +1,6 @@
 export const ICON_MAIL = "ICON_MAIL";
 export const ICON_INBOX = "ICON_INBOX";
+export const ICON_LOGOUT = "ICON_LOGOUT";
 export const ICON_EXPANDED_LESS = "ICON_EX_L";
 export const ICON_EXPANDED_MORE = "ICON_EX_M";
 export const MENU_ICON_HOME = "MENU_ICON_HOME";

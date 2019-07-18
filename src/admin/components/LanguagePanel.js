@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import {withStyles} from "@material-ui/styles";
 import {mainStyle} from "../styles/main.style";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {changeLang} from "../../store/actions/site.actions";
 import langs from "../../settings/langs";
 
@@ -15,13 +15,11 @@ const LanguagePanel = ({classes}) => {
     const [open, setOpen] = React.useState(false);
     const lang = useSelector((state) => state.site.lang);
     const [t, i18n] = useTranslation();
-    const dispatch = useDispatch();
 
     function handleChange(e) {
-        dispatch(changeLang(e.target.value));
+        changeLang(e.target.value);
         i18n.changeLanguage(e.target.value);
     }
-
     function handleClose() {
         setOpen(false);
     }
@@ -29,8 +27,6 @@ const LanguagePanel = ({classes}) => {
     function handleOpen() {
         setOpen(true);
     }
-
-    console.log(lang);
     return (
         <form autoComplete="off">
             <FormControl className={classes.formControl}>

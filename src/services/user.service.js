@@ -1,4 +1,6 @@
 import {_httpRequest} from "../utils/_httpRequest";
+import {history} from "../utils/history";
+import {userActions, notificationActions} from "../store/actions";
 
 export const userService = {
     login,
@@ -8,20 +10,17 @@ export const userService = {
 };
 
 
-function login(username, password) {
-    /**HERE HTTP REQUEST SETTINGS*/
-    /*HERE TEST ONLY*/
-    localStorage.setItem('user', JSON.stringify({username, password}));
-    return {
-        username, password
-    }
+function login(login, password) {
+    _httpRequest.post('/login', {login, password}).then((data) => {
+        userActions.login(data);
+        history.push('/admin');
+    })
+        .catch((err) => {
+            notificationActions.showNotification(err.message);
+        });
 }
-function auth() {
-    return _httpRequest.get('/auth');
-}
+
 function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
 }
 
 function getList(params) {
@@ -30,6 +29,5 @@ function getList(params) {
 
 
 function create(data) {
-    console.log(data);
     return _httpRequest.post('/users/add', data);
 }

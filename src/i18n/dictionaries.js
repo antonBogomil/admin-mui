@@ -27,11 +27,15 @@ const en = {
         PAGE_TITLE_DOC: "Read documentation",
         INFO_SELECTED: "Selected : ",
         LOGOUT: "Log out",
+        SIGN_IN: "Sign in",
         LANGUAGE: "Language",
         VALID_PASSWORD_DIFF: "Password does not match!",
         VALID_LENGTH: "Less or bigger then required length!",
         LANG_RU: "Russian",
         LANG_EN: "English",
+        LOGIN: "Login",
+        PASSWORD: "Password",
+        CANCEL: "Cancel"
     }
 };
 const ru = {
@@ -63,9 +67,14 @@ const ru = {
         PAGE_TITLE_DOC: "Прочитать документацию",
         INFO_SELECTED: "Выбрано : ",
         LOGOUT: "Выйти",
+        SIGN_IN: "Войти",
         LANGUAGE: "Язык",
         LANG_RU: "Русский",
         LANG_EN: "Английский",
+        LOGIN: "Логин",
+        PASSWORD: "Пароль",
+        CANCEL: "Отмнена"
+
     }
 };
 const ua = {

@@ -4,43 +4,85 @@ import TextField from "@material-ui/core/TextField";
 import {mainStyle} from "../styles/main.style";
 import {withStyles} from "@material-ui/core";
 import {useForm} from "../../hook/useForm";
+import Button from "@material-ui/core/Button";
+import {userService} from "../../services/user.service";
+import LinkTo from "./LinkTo";
+import Paper from "@material-ui/core/Paper";
+import LanguagePanel from "./LanguagePanel";
+import {useTranslation} from "react-i18next";
+import withNotification from "./withNotification";
+
 const Login = ({classes}) => {
+    const [t] = useTranslation();
+
+    function sendUser(user) {
+        userService.login(user.login, user.password);
+    }
     const {
         handleChange,
         handleSubmit,
         values,
         errors,
         handleReset
-    } = useForm({login: '', password: ''});
-    console.log(values);
+    } = useForm({login: '', password: ''}, sendUser);
     return (
-        <div>
-            <Typography color={"primary"} component={'h4'} variant={'h4'}>
-                Login
-            </Typography>
-            <form>
-                <TextField
-                    label="Name"
-                    className={classes.textField}
-                    value={values['login']}
-                    onChange={(e) => {
-                        handleChange('login', e.target.value)
-                    }}
-                    margin="normal"
-                />
-                <TextField
-                    label="password"
-                    type='password'
-                    className={classes.textField}
-                    value={values['password']}
-                    onChange={(e) => {
-                        handleChange('password', e.target.value)
-                    }}
-                    margin="normal"
-                />
-            </form>
-        </div>
+        <>
+            <div className={classes.fixedLangPanel}>
+                <LanguagePanel/>
+            </div>
+            <div className={classes.rootPageLogin}>
+                <Paper className={classes.paperPageLogin}>
+                    <div>
+                        <Typography color={"primary"}
+                                    component={'h4'}
+                                    align={"center"}
+                                    variant={'h4'}>
+                            {t('SIGN_IN')}
+                        </Typography>
+                    </div>
+                    <form onSubmit={handleSubmit} className={classes.form}>
+                        <TextField
+                            label={t('LOGIN')}
+                            className={classes.textField}
+                            fullWidth
+                            required
+                            value={values['login']}
+                            onChange={(e) => {
+                                handleChange('login', e.target.value)
+                            }}
+                            margin="normal"
+                        />
+                        <TextField
+                            label={t("PASSWORD")}
+                            type='password'
+                            fullWidth
+                            required
+                            className={classes.textField}
+                            value={values['password']}
+                            onChange={(e) => {
+                                handleChange('password', e.target.value)
+                            }}
+                            margin="normal"
+                        />
+                        <div>
+                            <Button type={'submit'} variant={'contained'} color={"primary"}
+                                    className={classes.button}>
+                                {t('SIGN_IN')}
+                            </Button>
+                            <Button type={'submit'}
+                                    component={LinkTo}
+                                    to={'/'}
+                                    variant={'outlined'}
+                                    color={"default"} className={classes.button}>
+                                {t("CANCEL")}
+                            </Button>
+                        </div>
+                    </form>
+                </Paper>
+            </div>
+        </>
+
     );
 };
 
-export default withStyles(mainStyle)(Login);
+export default withStyles(mainStyle)(withNotification(Login));

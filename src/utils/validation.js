@@ -1,13 +1,12 @@
 const defaultRules = {
     password: {
-        min: 8,
+        min: 3,
         max: 16,
-        confirm: true,
+        confirm: false,
     },
 };
 
 export const validate = (values = [], rules = defaultRules) => {
-    console.log(values);
     const errors = {};
     for (let key in values) {
         let value = values[key];

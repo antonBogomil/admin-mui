@@ -1,4 +1,5 @@
 import {
+    ICON_LOGOUT,
     MENU_ICON_ADD, MENU_ICON_DOC,
     MENU_ICON_FORMS,
     MENU_ICON_HOME, MENU_ICON_LIST,
@@ -6,6 +7,8 @@ import {
     MENU_ICON_SETTINGS,
     MENU_ICON_UI, MENU_ICON_USERS
 } from "../constants/icons";
+import {ACTION_TYPES} from "../store/types";
+import {userActions} from "../store/actions";
 
 export default [
     {
@@ -66,6 +69,11 @@ export default [
         url: '/docs',
         icon: MENU_ICON_DOC,
     },
+    {
+        title: 'LOGOUT',
+        action: userActions.logout,
+        icon: ICON_LOGOUT,
+    }
 
 
 ];

@@ -1,6 +1,6 @@
 import {ACTION_TYPES} from "../types";
 
-export default (state = null, action) => {
+const userReducer = (state = null, action) => {
     switch (action.type) {
         case ACTION_TYPES.USER_LOGIN:
             return action.payload;
@@ -10,3 +10,4 @@ export default (state = null, action) => {
             return state
     }
 };
+export default userReducer;
