@@ -2,6 +2,6 @@ Material ui admin dashboard with auth. Have two parts - main-site side and admin
 Use fake backend and mock data for http request (overrided fetch function). 
 Technologies:
 - React with Redux; 
-- JSS - for styles;
-- [ Material ui](https://material-ui.com/)
+- [JSS](https://cssinjs.org/?v=v10.0.0-alpha.22) - for styling;
+- [ MaterialUI design](https://material-ui.com/)
 
