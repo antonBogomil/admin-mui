@@ -5,7 +5,10 @@ Technologies:
 - [JSS](https://cssinjs.org/?v=v10.0.0-alpha.22) - for styling;
 - [ MaterialUI](https://material-ui.com/) design.
 
-![muiAdmin](https://github.com/antonBogomil/admin-mui/blob/master/public/screen-dashboard.png);
+Login page (login - admin,password - 123) :
 ![muiAdmin-login](https://github.com/antonBogomil/admin-mui/blob/master/public/screen-login.png);
+Dashboard page:
+![muiAdmin](https://github.com/antonBogomil/admin-mui/blob/master/public/screen-dashboard.png);
+
 
 
