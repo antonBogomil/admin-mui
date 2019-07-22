@@ -4,8 +4,10 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import classNames from 'classnames';
 import React from "react";
+import {useStyles} from "../../styles";
 
-const ListHead = ({fields, classes}) => {
+const ListHead = ({fields}) => {
+    // const classes = useStyles();
     return (
         <TableHead>
             <TableRow>
@@ -21,35 +23,26 @@ const ListHead = ({fields, classes}) => {
     )
 };
 
-const ListBody = ({items = [], fields = [], rows = 0, loading, classes}) => {
+const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
     let result = [];
+    const classes = useStyles();
     for (let i = 0; i < rows; i++) {
-        if (items[i]) {
-            let item = items[i];
-            result.push(
-                <TableRow key={i}>
-                    {
-                        fields.map((field, i) => {
-                            return (
-                                <ListCell key={i} value={item[field.name]} loading={loading} classes={classes}/>
-                            )
-                        })
-                    }
-                </TableRow>
-            )
-        } else {
-            result.push(
-                <TableRow key={i}>
-                    {
-                        fields.map((field, i) => {
-                            return (
-                                <ListCell key={i} value={'-'} loading={loading} classes={classes}/>
-                            )
-                        })
-                    }
-                </TableRow>
-            )
-        }
+        result.push(
+            <TableRow key={i}>
+                {
+                    fields.map((field, j) => {
+                        let item = items[i];
+                        let val = item ? item[field.name] : '-';
+                        return (
+                            <ListCell key={j}
+                                      value={val}
+                                      loading={loading}
+                                      classes={classes}/>
+                        )
+                    })
+                }
+            </TableRow>
+        );
     }
     return (
         <TableBody>
@@ -57,7 +50,8 @@ const ListBody = ({items = [], fields = [], rows = 0, loading, classes}) => {
         </TableBody>
     )
 };
-const ListCell = ({value, type, loading, empty, classes}) => {
+const ListCell = ({value, type, loading, empty}) => {
+    const classes = useStyles();
     return (
         <TableCell className={classNames({[classes.loadingField]: loading || empty})}>
             {value}

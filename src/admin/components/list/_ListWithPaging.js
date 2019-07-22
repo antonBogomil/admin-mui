@@ -4,6 +4,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Table from "@material-ui/core/Table";
 import {_httpRequest} from "../../../utils/_httpRequest";
+import {useStyles} from "../../styles";
 
 export const LIST_ACTIONS = {
     PAGE_CHANGE: "CHANGE",
@@ -19,9 +20,10 @@ const initialState = {
     count: 0,
     error: false,
 };
-const ListWithPaging = ({config, classes}) => {
+const ListWithPaging = ({config}) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
     const {page, loading, error, items, rows, count, selected} = state;
+    const classes = useStyles();
     useEffect(() => {
         dispatch({type: LIST_ACTIONS.PAGE_LOADING});
         _httpRequest.get(config.dataUrl, {
@@ -55,23 +57,22 @@ const ListWithPaging = ({config, classes}) => {
         })
     }
 
-    console.log(state);
     return (
         <>
-            {loading && <LinearProgress variant={"query"}/>}
+            <div className={classes.listProgress}>
+                {loading && <LinearProgress variant={"query"}/>}
+            </div>
             <Table>
                 <ListHead fields={config.fields}/>
                 <ListBody fields={config.fields}
                           loading={loading}
                           items={items}
                           rows={rows}
-                          classes={classes}
                 />
             </Table>
             <TablePagination
                 rowsPerPageOptions={[5, 10, 15]}
                 component="div"
-                classes={{root: classes.pagination}}
                 count={count}
                 rowsPerPage={rows}
                 page={page}

@@ -16,7 +16,7 @@ export const mainStyle = (theme) => {
             [theme.breakpoints.up('sm')]: {
                 width: `calc(100% - ${drawerWidth}px)`,
             },
-            backgroundColor: theme.palette.secondary.main
+            backgroundColor: theme.palette.primary.main
         },
         menuButton: {
             marginRight: theme.spacing(2),

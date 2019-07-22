@@ -6,6 +6,7 @@ import store from './store';
 // import initTranslation from "./i18n";
 import Home from "./site/Home";
 import {history} from './utils/history';
+
 // initTranslation(store.getState().site.lang);
 const App = () => {
     return (

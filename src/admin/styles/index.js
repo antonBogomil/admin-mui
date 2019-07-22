@@ -1,11 +1,8 @@
-import {createStyles, makeStyles} from "@material-ui/styles";
+import {makeStyles} from "@material-ui/core";
 import {listStyle} from "./list.style";
 import {menuStyle} from "./menu.style";
 import {mainStyle} from "./main.style";
 import {notificationStyle} from "./infoBar.style";
-
-import theme from './theme';
-
 const allStyles = [
     listStyle,
     menuStyle,
@@ -18,8 +15,7 @@ const combineStyles = (theme) => {
             ...result,
             ...style(theme),
         }
-    })
+    }, {});
 };
-console.log(combineStyles(theme));
-
-export const useStyles = makeStyles(theme => createStyles(combineStyles(theme)));
+const styles = makeStyles(combineStyles);
+export const useStyles = styles;
