@@ -1,4 +1,4 @@
-#ReactMUI Dashboard
+# ReactMUI Dashboard
 
 ## About
 Material ui admin dashboard with auth. Has two parts - main-site side and admin dashboard.
