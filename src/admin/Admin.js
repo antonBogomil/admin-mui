@@ -1,23 +1,26 @@
-import React from 'react';
-import {Router, Route, Switch} from "react-router-dom";
+import React, {Suspense} from 'react';
+import {Route, Switch} from "react-router-dom";
 import Login from "./components/Login";
-import withTheme from "../utils/withTheme";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {mainStyle} from "./styles/main.style";
-import themeService from "../services/theme.service";
-import store from "../store";
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-const theme = themeService.create(store.getState().site.theme);
+import theme from './styles/theme';
+import withNotification from "./components/withNotification";
+import withTheme from "./components/withTheme";
+import initTranslation from '../i18n';
+import store from "../store";
+
+initTranslation(store.getState().site.lang);
+
 const Admin = (props) => {
     return (
-        <>
+        <Suspense fallback={'loading...'}>
             <Switch>
                 <Route path='/admin/login' component={Login}/>
                 <PrivateRoute path={'/admin'} component={Dashboard}/>
+                <Route component={Dashboard}/>
             </Switch>
-        </>
+        </Suspense>
     );
 };
 
-export default withTheme(withStyles(mainStyle)(Admin), theme);
+export default withTheme(withNotification(Admin), theme);

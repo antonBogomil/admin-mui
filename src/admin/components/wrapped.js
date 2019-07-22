@@ -1,12 +1,12 @@
 import React from "react";
 import {withStyles} from "@material-ui/styles";
-import {mainStyle} from "../styles/main.style";
 import Typography from "@material-ui/core/Typography";
 import {Grid} from "@material-ui/core";
+import {useStyles} from "../styles";
 
 export default function wrappedPage(Component, settings) {
     let WrappedPage = (props) => {
-        const {classes} = props;
+        const classes = useStyles();
         return (
             <main className={classes.content}>
                 <div className={classes.toolbar}/>
@@ -21,11 +21,10 @@ export default function wrappedPage(Component, settings) {
                    </Grid>
                     <Grid item xs={12}>
                         <Component {...props}/>
-
                     </Grid>
                 </Grid>
             </main>
         )
     };
-    return withStyles(mainStyle)(WrappedPage);
+    return WrappedPage;
 }

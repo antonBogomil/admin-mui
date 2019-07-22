@@ -42,7 +42,6 @@ export const mainStyle = (theme) => {
             margin: theme.spacing(1),
             marginTop: theme.spacing(2),
         },
-
         headerRight: {},
         header: {
             width: '100%',
@@ -74,7 +73,7 @@ export const mainStyle = (theme) => {
         paperPageLogin: {
             padding: theme.spacing(1),
         },
-        fixedLangPanel:{
+        fixedLangPanel: {
             position: 'fixed',
             right: 10,
         }

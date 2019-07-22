@@ -2,12 +2,12 @@ import React from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
-import {withStyles} from "@material-ui/styles";
-import {mainStyle} from "../styles/main.style";
 import LanguagePanel from "./LanguagePanel";
+import {useStyles} from "../styles";
 
 const Header = (props) => {
-    const {classes,handleDrawerToggle} = props;
+    const {handleDrawerToggle} = props;
+    const classes = useStyles();
     return (
         <>
             <AppBar position="fixed" className={classes.appBar}>
@@ -26,4 +26,4 @@ const Header = (props) => {
     );
 };
 
-export default withStyles(mainStyle)(Header);
+export default Header;

@@ -16,7 +16,7 @@ function login(login, password) {
         history.push('/admin');
     })
         .catch((err) => {
-            notificationActions.showNotification(err.message);
+            notificationActions.showErrorMessage(err.message);
         });
 }
 

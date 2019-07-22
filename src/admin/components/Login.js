@@ -1,8 +1,6 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import {mainStyle} from "../styles/main.style";
-import {withStyles} from "@material-ui/core";
 import {useForm} from "../../hook/useForm";
 import Button from "@material-ui/core/Button";
 import {userService} from "../../services/user.service";
@@ -11,10 +9,10 @@ import Paper from "@material-ui/core/Paper";
 import LanguagePanel from "./LanguagePanel";
 import {useTranslation} from "react-i18next";
 import withNotification from "./withNotification";
-
-const Login = ({classes}) => {
+import {useStyles} from "../styles";
+const Login = (props) => {
     const [t] = useTranslation();
-
+    const classes = useStyles();
     function sendUser(user) {
         userService.login(user.login, user.password);
     }
@@ -85,4 +83,4 @@ const Login = ({classes}) => {
     );
 };
 
-export default withStyles(mainStyle)(withNotification(Login));
+export default Login;

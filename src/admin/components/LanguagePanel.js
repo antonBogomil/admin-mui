@@ -1,21 +1,19 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import {withStyles} from "@material-ui/styles";
-import {mainStyle} from "../styles/main.style";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import {changeLang} from "../../store/actions/site.actions";
 import langs from "../../settings/langs";
+import {useStyles} from "../styles";
 
-const LanguagePanel = ({classes}) => {
+const LanguagePanel = (props) => {
     const [open, setOpen] = React.useState(false);
     const lang = useSelector((state) => state.site.lang);
     const [t, i18n] = useTranslation();
-
+    const classes = useStyles();
     function handleChange(e) {
         changeLang(e.target.value);
         i18n.changeLanguage(e.target.value);
@@ -60,4 +58,4 @@ const LanguagePanel = ({classes}) => {
     );
 };
 
-export default withStyles(mainStyle)(LanguagePanel);
+export default LanguagePanel;

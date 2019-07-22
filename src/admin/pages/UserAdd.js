@@ -5,9 +5,10 @@ import TextField from "@material-ui/core/TextField";
 import {useForm} from "../../hook/useForm";
 import Button from "@material-ui/core/Button";
 import {Grid} from "@material-ui/core";
+import {useStyles} from "../styles";
 
 const UserAdd = (props) => {
-    const {classes} = props;
+    const classes = useStyles();
     const {values, errors, handleChange, handleSubmit} = useForm({}, addUser);
 
     function addUser(data) {

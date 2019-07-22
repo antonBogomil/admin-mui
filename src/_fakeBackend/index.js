@@ -5,6 +5,7 @@ import {getPage} from "./utils/utils";
 export function fakeBackend() {
     let realFetch = window.fetch;
     window.fetch = function (url, options) {
+        console.log(options);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (url.endsWith('/login') && options.method === 'POST') {

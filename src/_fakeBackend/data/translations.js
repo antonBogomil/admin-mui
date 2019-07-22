@@ -35,7 +35,8 @@ const en = {
         LANG_EN: "English",
         LOGIN: "Login",
         PASSWORD: "Password",
-        CANCEL: "Cancel"
+        CANCEL: "Cancel",
+        WRONG_PASSWORD: "Wrong password!"
     }
 };
 const ru = {
@@ -73,8 +74,8 @@ const ru = {
         LANG_EN: "Английский",
         LOGIN: "Логин",
         PASSWORD: "Пароль",
-        CANCEL: "Отмнена"
-
+        CANCEL: "Отмнена",
+        WRONG_PASSWORD: "Ошибка \"Неверный пароль\""
     }
 };
 const ua = {

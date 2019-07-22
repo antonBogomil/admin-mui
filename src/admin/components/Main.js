@@ -1,6 +1,5 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core";
-import {mainStyle} from "../styles/main.style";
 const Main = props => {
     const {classes} = props;
     return (

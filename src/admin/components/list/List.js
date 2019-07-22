@@ -1,10 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core";
-import {listStyle} from "../../../admin/styles/list.style";
 import ListWithPaging from "./_ListWithPaging";
 import ListDefault from "./_ListDefault";
+import {useStyles} from "../../styles";
 
-const List = ({data = [], config,classes}) => {
+const List = ({data = [], config,}) => {
+    const classes = useStyles();
     const {paging} = config;
     if (paging) {
         return (
@@ -17,4 +17,4 @@ const List = ({data = [], config,classes}) => {
     }
 };
 List.propTypes = {};
-export default withStyles(listStyle)(List);
+export default List;

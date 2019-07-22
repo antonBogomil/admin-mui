@@ -11,9 +11,11 @@ import classNames from 'classnames';
 import {menuStyle} from "../styles/menu.style";
 import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {useStyles} from "../styles";
 
-const Menu = ({data, depth = 0, classes, parentUrl = ''}) => {
+const Menu = ({data, depth = 0, parentUrl = ''}) => {
     const activePath = window.location.pathname;
+    const classes = useStyles();
     return (
         <List component={'nav'} className={classNames(classes.menu, {[classes.menuNested]: depth > 0})}>
             {
@@ -32,7 +34,6 @@ const Menu = ({data, depth = 0, classes, parentUrl = ''}) => {
 const MenuItem = ({item, depth, classes, parentUrl, isActive}) => {
     const [open, setOpen] = useState(false);
     const [t] = useTranslation();
-
     function openSubMenu() {
         setOpen(!open);
     }
@@ -109,4 +110,4 @@ const ListItemLink = (props) => {
         </NavLink>
     )
 };
-export default withStyles(menuStyle)(Menu);
+export default Menu;
