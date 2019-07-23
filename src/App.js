@@ -1,13 +1,12 @@
 import React from 'react';
+import loadable from '@loadable/component'
 import {Provider} from "react-redux";
 import {Router, Route, Switch,} from "react-router-dom";
-import Admin from "./admin/Admin";
 import store from './store';
-// import initTranslation from "./i18n";
-import Home from "./site/Home";
 import {history} from './utils/history';
 
-// initTranslation(store.getState().site.lang);
+const Home = loadable(() => import('./site/Home'));
+const Admin = loadable(() => import('./admin'));
 const App = () => {
     return (
         <Provider store={store}>

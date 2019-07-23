@@ -8,7 +8,6 @@ import LinkTo from "./LinkTo";
 import Paper from "@material-ui/core/Paper";
 import LanguagePanel from "./LanguagePanel";
 import {useTranslation} from "react-i18next";
-import withNotification from "./withNotification";
 import {useStyles} from "../styles";
 const Login = (props) => {
     const [t] = useTranslation();

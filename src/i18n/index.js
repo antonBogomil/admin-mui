@@ -6,12 +6,10 @@ export default (lang) => {
     i18n.use(Backend)
         .use(initReactI18next)
         .init({
-            lng: lang,
             // backend: {
             //     loadPath: '/api/locales/{{lng}}.json',
             // },
             resources: locales,
-            fallbackLng: lang, // use en if detected lng is not available
             keySeparator: false, // we do not use keys in form messages.welcome
             interpolation: {
                 escapeValue: false // react already safes from xss

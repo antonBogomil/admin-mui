@@ -9,14 +9,13 @@ import {changeLang} from "../../store/actions/site.actions";
 import langs from "../../settings/langs";
 import {useStyles} from "../styles";
 
-const LanguagePanel = (props) => {
+const LanguagePanel = () => {
     const [open, setOpen] = React.useState(false);
     const lang = useSelector((state) => state.site.lang);
-    const [t, i18n] = useTranslation();
+    const [t] = useTranslation();
     const classes = useStyles();
     function handleChange(e) {
         changeLang(e.target.value);
-        i18n.changeLanguage(e.target.value);
     }
     function handleClose() {
         setOpen(false);

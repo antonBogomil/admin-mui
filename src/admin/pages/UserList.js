@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import wrapped from "../components/wrapped";
-import {LIST_COLUMN_TYPE} from "../../constants/const";
-import List from "../components/list/List";
+import {LIST_COLUMN_TYPE} from "../../constants/list";
+import List from "../components/list";
 
 const listConfig = {
     fields: [

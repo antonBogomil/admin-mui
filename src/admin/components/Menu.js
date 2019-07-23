@@ -6,9 +6,7 @@ import Collapse from "@material-ui/core/Collapse";
 import Icon from "./Icon";
 import {ICON_EXPANDED_LESS, ICON_EXPANDED_MORE} from "../../constants/icons";
 import {ListItemIcon} from "@material-ui/core";
-import withStyles from "@material-ui/styles/withStyles";
 import classNames from 'classnames';
-import {menuStyle} from "../styles/menu.style";
 import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useStyles} from "../styles";
@@ -21,7 +19,7 @@ const Menu = ({data, depth = 0, parentUrl = ''}) => {
             {
                 data && data.map((item, i) => {
                     return (
-                        <MenuItem item={item} classes={classes}
+                        <MenuItem item={item}
                                   isActive={activePath === (parentUrl + item.url)}
                                   parentUrl={parentUrl}
                                   key={item.id || i} depth={depth}/>
@@ -31,13 +29,13 @@ const Menu = ({data, depth = 0, parentUrl = ''}) => {
         </List>
     );
 };
-const MenuItem = ({item, depth, classes, parentUrl, isActive}) => {
+const MenuItem = ({item, depth, parentUrl, isActive}) => {
     const [open, setOpen] = useState(false);
     const [t] = useTranslation();
+    const classes = useStyles();
     function openSubMenu() {
         setOpen(!open);
     }
-
     return (
         <>
             {
@@ -59,7 +57,6 @@ const MenuItem = ({item, depth, classes, parentUrl, isActive}) => {
                         </ListItem>
                         <Collapse in={open} timeout="auto">
                             <Menu data={Object.values(item.nested)}
-                                  classes={classes}
                                   parentUrl={parentUrl + item.url}
                                   depth={depth + 1}
                                   isOpen={open}

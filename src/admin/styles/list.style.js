@@ -1,5 +1,4 @@
 export const listStyle = theme => {
-    console.log('list st');
     return {
         root: {
             width: '100%',
@@ -16,5 +15,19 @@ export const listStyle = theme => {
         listProgress: {
             height: '4px'
         },
+        cell: {
+            height: '100px'
+        },
+        cellImg: {
+            margin: 10,
+            width: 60,
+            height: 60,
+        },
+        checkedIcon:{
+            color: theme.palette.primary.main
+        },
+        checkedIconFalse:{
+            color: theme.palette.secondary.main
+        }
     }
 };

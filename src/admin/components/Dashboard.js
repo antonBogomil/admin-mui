@@ -7,10 +7,11 @@ import Hidden from '@material-ui/core/Hidden';
 import Menu from "./Menu";
 import Header from "./Header";
 import menu from "../../settings/menu";
-import {useStyles} from "../styles";
 import routes from "../../settings/routes";
 import {Route, Switch} from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {useStyles} from "../styles";
+
 const Dashboard = (props) => {
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);

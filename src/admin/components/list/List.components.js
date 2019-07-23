@@ -5,6 +5,11 @@ import TableCell from "@material-ui/core/TableCell";
 import classNames from 'classnames';
 import React from "react";
 import {useStyles} from "../../styles";
+import dateFormat from 'dateformat';
+import {LIST_COLUMN_TYPE} from "../../../constants/list";
+import Avatar from "@material-ui/core/Avatar";
+import {CheckBox as CheckTrueIcon} from "@material-ui/icons";
+import {IndeterminateCheckBox as CheckFalseIcon} from "@material-ui/icons";
 
 const ListHead = ({fields}) => {
     // const classes = useStyles();
@@ -32,10 +37,11 @@ const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
                 {
                     fields.map((field, j) => {
                         let item = items[i];
-                        let val = item ? item[field.name] : '-';
+                        let val = item ? item[field.name] : null;
                         return (
                             <ListCell key={j}
                                       value={val}
+                                      type={field.type}
                                       loading={loading}
                                       classes={classes}/>
                         )
@@ -52,11 +58,29 @@ const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
 };
 const ListCell = ({value, type, loading, empty}) => {
     const classes = useStyles();
+    function getViewByType(value, type) {
+        if (value !== null) {
+            switch (type) {
+                case LIST_COLUMN_TYPE.DATE:
+                    return dateFormat(value, "dd-mm-yyyy, HH:MM");
+                case LIST_COLUMN_TYPE.IMG :
+                    return <Avatar alt={value} src={value} className={classes.cellImg}/>;
+                case LIST_COLUMN_TYPE.BOOLEAN :
+                    return (value ? <CheckTrueIcon className={classes.checkedIcon}/> : <CheckFalseIcon className={classes.checkedIconFalse}/>);
+                default:
+                    return value
+            }
+        } else {
+            return '-'
+        }
+    }
+
     return (
-        <TableCell className={classNames({[classes.loadingField]: loading || empty})}>
-            {value}
+        <TableCell className={classNames(classes.cell, {[classes.loadingField]: loading || empty})}>
+            {getViewByType(value, type)}
         </TableCell>
     )
 };
+
 
 export {ListBody, ListCell, ListHead}

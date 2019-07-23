@@ -1,7 +1,9 @@
 import React, {lazy} from "react";
-import UserAdd from "../admin/pages/UserAdd";
-import Home from "../admin/pages/Home";
-import UserList from "../admin/pages/UserList";
+import loadable from '@loadable/component'
+
+const UserAdd = loadable(()=>import('../admin/pages/UserAdd'));
+const UserList = loadable(()=>import('../admin/pages/UserList'));
+const Home = loadable(()=>import('../admin/pages/Home'));
 // export const ADMIN_PATH  = '/admin';
 export default [
     {
