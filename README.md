@@ -9,7 +9,8 @@ Translated in 2 languages (en,ru);
 * React with Redux; 
 * [JSS](https://cssinjs.org/?v=v10.0.0-alpha.22) - for styling;
 * [ MaterialUI](https://material-ui.com/) design;
-* [i18next](www.i18next.com) for translation.
+* [i18next](www.i18next.com) for translation;
+* [Loadable](https://github.com/smooth-code/loadable-components) code splitting;
 
 ## Demo
 
