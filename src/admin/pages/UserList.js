@@ -10,10 +10,11 @@ const listConfig = {
         {name: 'name', title: 'Name', type: LIST_COLUMN_TYPE.STRING},
         {name: "role", title: 'Role', type: LIST_COLUMN_TYPE.STRING},
         {name: "active", title: 'Active', type: LIST_COLUMN_TYPE.BOOLEAN},
-        {name: "dateCreated", title: 'Created', type: LIST_COLUMN_TYPE.DATE}
+        {name: "dateCreated", title: 'Created', type: LIST_COLUMN_TYPE.DATE},
     ],
     dataUrl: '/users',
-    paging: true
+    paging: true,
+    edit: true
 };
 
 function UserList() {

@@ -57,9 +57,10 @@ const List = ({config}) => {
                 {loading && <LinearProgress variant={"query"}/>}
             </div>
             <Table>
-                <ListHead fields={config.fields}/>
-                <ListBody fields={config.fields}
+                <ListHead config={config}/>
+                <ListBody config={config}
                           loading={loading}
+                          edit={config.edit}
                           items={items}
                           rows={rows}
                 />

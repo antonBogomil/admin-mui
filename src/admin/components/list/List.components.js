@@ -8,10 +8,12 @@ import {useStyles} from "../../styles";
 import dateFormat from 'dateformat';
 import {LIST_COLUMN_TYPE} from "../../../constants/list";
 import Avatar from "@material-ui/core/Avatar";
-import {CheckBox as CheckTrueIcon} from "@material-ui/icons";
-import {IndeterminateCheckBox as CheckFalseIcon} from "@material-ui/icons";
+import CheckTrueIcon from "@material-ui/icons/CheckBox";
+import CheckFalseIcon from "@material-ui/icons/IndeterminateCheckBox";
+import EditIcon from "@material-ui/icons/Edit"
+import Fab from "@material-ui/core/Fab";
 
-const ListHead = ({fields}) => {
+const ListHead = ({config: {fields, edit}}) => {
     // const classes = useStyles();
     return (
         <TableHead>
@@ -23,12 +25,13 @@ const ListHead = ({fields}) => {
                         </TableCell>
                     )
                 })}
+                {edit && <TableCell key={'edit'}/>}
             </TableRow>
         </TableHead>
     )
 };
 
-const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
+const ListBody = ({items = [], config: {fields, edit}, rows = 0, loading}) => {
     let result = [];
     const classes = useStyles();
     for (let i = 0; i < rows; i++) {
@@ -47,6 +50,14 @@ const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
                         )
                     })
                 }
+                {
+                    edit &&
+                    <TableCell>
+                        <Fab color="primary" aria-label="Add" className={classes.fab}>
+                            <EditIcon fontSize={'small'}/>
+                        </Fab>
+                    </TableCell>
+                }
             </TableRow>
         );
     }
@@ -58,6 +69,7 @@ const ListBody = ({items = [], fields = [], rows = 0, loading}) => {
 };
 const ListCell = ({value, type, loading, empty}) => {
     const classes = useStyles();
+
     function getViewByType(value, type) {
         if (value !== null) {
             switch (type) {
@@ -66,7 +78,8 @@ const ListCell = ({value, type, loading, empty}) => {
                 case LIST_COLUMN_TYPE.IMG :
                     return <Avatar alt={value} src={value} className={classes.cellImg}/>;
                 case LIST_COLUMN_TYPE.BOOLEAN :
-                    return (value ? <CheckTrueIcon className={classes.checkedIcon}/> : <CheckFalseIcon className={classes.checkedIconFalse}/>);
+                    return (value ? <CheckTrueIcon className={classes.checkedIcon}/> :
+                        <CheckFalseIcon className={classes.checkedIconFalse}/>);
                 default:
                     return value
             }
