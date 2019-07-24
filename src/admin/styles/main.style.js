@@ -34,9 +34,28 @@ export const mainStyle = (theme) => {
             width: drawerWidth,
             backgroundColor: theme.palette.secondary.dark
         },
+        navigationContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            height: 'inherit',
+            justifyContent: 'space-between',
+
+        },
+        bottomNavigation: {
+            backgroundColor: 'rgba(0, 0, 0, 0.08)',
+        },
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
+        },
+        langMenu: {
+            padding: 0,
+            "&:focus": {
+                backgroundColor: 'transparent'
+            }
+        },
+        langSelect: {
+            color: 'inherit',
         },
         button: {
             margin: theme.spacing(1),
@@ -61,7 +80,7 @@ export const mainStyle = (theme) => {
         },
         formControl: {
             margin: theme.spacing(1),
-            minWidth: 120,
+            // minWidth: 120,
         },
         rootPageLogin: {
             margin: 'auto',

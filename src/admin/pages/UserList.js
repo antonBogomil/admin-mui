@@ -14,7 +14,8 @@ const listConfig = {
     ],
     dataUrl: '/users',
     paging: true,
-    edit: true
+    edit: true,
+
 };
 
 function UserList() {

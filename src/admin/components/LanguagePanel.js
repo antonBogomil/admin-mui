@@ -8,15 +8,20 @@ import {useSelector} from "react-redux";
 import {changeLang} from "../../store/actions/site.actions";
 import langs from "../../settings/langs";
 import {useStyles} from "../styles";
+import InputBase from "@material-ui/core/InputBase";
+import LanguageIcon from "@material-ui/icons/Language";
+import IconButton from "@material-ui/core/IconButton";
 
 const LanguagePanel = () => {
     const [open, setOpen] = React.useState(false);
     const lang = useSelector((state) => state.site.lang);
     const [t] = useTranslation();
     const classes = useStyles();
+
     function handleChange(e) {
         changeLang(e.target.value);
     }
+
     function handleClose() {
         setOpen(false);
     }
@@ -24,19 +29,35 @@ const LanguagePanel = () => {
     function handleOpen() {
         setOpen(true);
     }
+
     return (
         <form autoComplete="off">
             <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="demo-controlled-open-select">
-                    {t("LANGUAGE")}
-                </InputLabel>
+                {/*<InputLabel*/}
+                {/*htmlFor="#select-lang"*/}
+                {/*component={LanguageIcon}*/}
+                {/*/>*/}
                 <Select
                     open={open}
                     onClose={handleClose}
                     onOpen={handleOpen}
                     value={lang}
-                    variant="standard"
                     onChange={handleChange}
+                    className={classes.langSelect}
+                    IconComponent={() => ''}
+                    renderValue={() =>
+                        <IconButton color='inherit' >
+                            <LanguageIcon fontSize={"inherit"}/>
+                        </IconButton>}
+                    classes={{
+                        selectMenu: classes.langMenu
+                    }}
+                    input={
+                        <InputBase
+                            id="select-lang"
+                            placeholder={t("LANGUAGE")}
+                        />
+                    }
 
                 >
                     {

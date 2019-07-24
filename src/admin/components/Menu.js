@@ -3,13 +3,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
-import Icon from "./Icon";
-import {ICON_EXPANDED_LESS, ICON_EXPANDED_MORE} from "../../constants/icons";
 import {ListItemIcon} from "@material-ui/core";
 import classNames from 'classnames';
 import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useStyles} from "../styles";
+import {ExpandLess, ExpandMore} from "@material-ui/icons";
 
 const Menu = ({data, depth = 0, parentUrl = ''}) => {
     const activePath = window.location.pathname;
@@ -33,9 +32,8 @@ const MenuItem = ({item, depth, parentUrl, isActive}) => {
     const [open, setOpen] = useState(false);
     const [t] = useTranslation();
     const classes = useStyles();
-    function openSubMenu() {
-        setOpen(!open);
-    }
+
+
     return (
         <>
             {
@@ -44,16 +42,18 @@ const MenuItem = ({item, depth, parentUrl, isActive}) => {
                         <ListItem
                             button
                             key={item.title}
-                            onClick={openSubMenu}
+                            onClick={() => {
+                                setOpen(!open);
+                            }}
                             className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
                             component={'div'}
                         >
                             {item.icon &&
                             <ListItemIcon className={classes.menuIcon}>
-                                <Icon name={item.icon}/>
+                                {item.icon}
                             </ListItemIcon>}
                             <ListItemText primary={t(item.title)}/>
-                            {open ? <Icon name={ICON_EXPANDED_LESS}/> : <Icon name={ICON_EXPANDED_MORE}/>}
+                            {open ? <ExpandLess/> : <ExpandMore/>}
                         </ListItem>
                         <Collapse in={open} timeout="auto">
                             <Menu data={Object.values(item.nested)}
@@ -64,36 +64,50 @@ const MenuItem = ({item, depth, parentUrl, isActive}) => {
                         </Collapse>
                     </>
                     :
-                    item.action ?
-                        <ListItem
-                            button
-                            key={item.title}
-                            onClick={() => {
-                                item.action()
-                            }}
-                            className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
-                            component={'div'}
-                        >
-                            {item.icon &&
-                            <ListItemIcon className={classes.menuIcon}>
-                                <Icon name={item.icon}/>
-                            </ListItemIcon>}
-                            <ListItemText primary={t(item.title)}/>
-                        </ListItem>
-                        :
-                        <ListItemLink
-                            key={item.title}
-                            className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
-                            to={parentUrl + item.url}
-                            selected={isActive}
-                            button
-                        >
-                            {item.icon &&
-                            <ListItemIcon className={classes.menuIcon}>
-                                <Icon name={item.icon}/>
-                            </ListItemIcon>}
-                            <ListItemText primary={t(item.title)}/>
-                        </ListItemLink>
+                    <ListItemLink
+                        key={item.title}
+                        className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
+                        to={parentUrl + item.url}
+                        selected={isActive}
+                        button
+                    >
+                        {item.icon &&
+                        <ListItemIcon className={classes.menuIcon}>
+                            {item.icon}
+                        </ListItemIcon>}
+                        <ListItemText primary={t(item.title)}/>
+                    </ListItemLink>
+                // item.action ?
+                //     <ListItem
+                //         button
+                //         key={item.title}
+                //         onClick={() => {
+                //             item.action()
+                //         }}
+                //         className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
+                //         component={'div'}
+                //     >
+                //         {item.icon &&
+                //         <ListItemIcon className={classes.menuIcon}>
+                //             {item.icon}
+                //         </ListItemIcon>}
+                //         <ListItemText primary={t(item.title)}/>
+                //     </ListItem>
+                //     :
+                //     <ListItemLink
+                //         key={item.title}
+                //         className={classNames(classes.menuItem, {[classes.nestedMenuItem]: depth > 0})}
+                //         to={parentUrl + item.url}
+                //         selected={isActive}
+                //         button
+                //     >
+                //         {item.icon &&
+                //         <ListItemIcon className={classes.menuIcon}>
+                //             {item.icon}
+                //         </ListItemIcon>}
+                //         <ListItemText primary={t(item.title)}/>
+                //     </ListItemLink>
+
             }
         </>
     )

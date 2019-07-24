@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useMemo, useReducer, useState} from 'react';
 import {ListBody, ListHead} from "./List.components";
 import TablePagination from "@material-ui/core/TablePagination";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -19,17 +19,21 @@ const List = ({config}) => {
     const {page, loading, error, items, rows, count, selected} = state;
     const classes = useStyles();
     useEffect(() => {
+        let isSubscribed = true;
         dispatch({type: LIST_ACTIONS.PAGE_LOADING});
         _httpRequest.get(config.dataUrl, {
             page: page,
             rows: rows
         }).then((data) => {
-            dispatch({
+            isSubscribed && dispatch({
                 type: LIST_ACTIONS.PAGE_LOADED,
                 payload: data,
             })
-        })
-    }, [page, rows]);
+        });
+        return () => {
+            isSubscribed = false
+        }
+    }, [config.dataUrl, page, rows]);
 
     function handleChangePage(event, newPage) {
         dispatch({
@@ -50,20 +54,20 @@ const List = ({config}) => {
             }
         })
     }
-
+    const head = useMemo(() => ListHead(config), [config]);
+    const body = <ListBody config={config}
+                           loading={loading}
+                           items={items}
+                           rows={rows}
+    />;
     return (
         <>
             <div className={classes.listProgress}>
                 {loading && <LinearProgress variant={"query"}/>}
             </div>
             <Table>
-                <ListHead config={config}/>
-                <ListBody config={config}
-                          loading={loading}
-                          edit={config.edit}
-                          items={items}
-                          rows={rows}
-                />
+                {head}
+                {body}
             </Table>
             <TablePagination
                 rowsPerPageOptions={[5, 10, 15]}

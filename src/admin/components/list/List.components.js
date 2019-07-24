@@ -3,7 +3,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import classNames from 'classnames';
-import React from "react";
+import React, {useState} from "react";
 import {useStyles} from "../../styles";
 import dateFormat from 'dateformat';
 import {LIST_COLUMN_TYPE} from "../../../constants/list";
@@ -11,35 +11,39 @@ import Avatar from "@material-ui/core/Avatar";
 import CheckTrueIcon from "@material-ui/icons/CheckBox";
 import CheckFalseIcon from "@material-ui/icons/IndeterminateCheckBox";
 import EditIcon from "@material-ui/icons/Edit"
-import Fab from "@material-ui/core/Fab";
+import {history} from '../../../utils/history';
+import IconButton from "@material-ui/core/IconButton";
 
-const ListHead = ({config: {fields, edit}}) => {
+const ListHead = (config) => {
+    console.log('haed');
     // const classes = useStyles();
     return (
         <TableHead>
             <TableRow>
-                {fields.map((field) => {
+                {config.fields.map((field) => {
                     return (
                         <TableCell key={field.title}>
                             {field.title}
                         </TableCell>
                     )
                 })}
-                {edit && <TableCell key={'edit'}/>}
+                {config.edit && <TableCell key={'edit'}/>}
             </TableRow>
         </TableHead>
     )
 };
 
 const ListBody = ({items = [], config: {fields, edit}, rows = 0, loading}) => {
-    let result = [];
     const classes = useStyles();
+    let result = [];
     for (let i = 0; i < rows; i++) {
+        let item = items[i];
         result.push(
-            <TableRow key={i}>
+            <TableRow key={i}
+                      className={classes.row}
+            >
                 {
                     fields.map((field, j) => {
-                        let item = items[i];
                         let val = item ? item[field.name] : null;
                         return (
                             <ListCell key={j}
@@ -52,10 +56,18 @@ const ListBody = ({items = [], config: {fields, edit}, rows = 0, loading}) => {
                 }
                 {
                     edit &&
-                    <TableCell>
-                        <Fab color="primary" aria-label="Add" className={classes.fab}>
-                            <EditIcon fontSize={'small'}/>
-                        </Fab>
+                    <TableCell className={classNames(classes.cellCenter, classes.cellBtn)}>
+                        {
+                            !loading && (
+                                <IconButton
+                                    color={'primary'}
+                                    onClick={() => {
+                                        history.push(`edit/${item.id}`)
+                                    }}>
+                                    <EditIcon fontSize={'default'}/>
+                                </IconButton>
+                            )
+                        }
                     </TableCell>
                 }
             </TableRow>

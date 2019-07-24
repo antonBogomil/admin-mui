@@ -18,6 +18,7 @@ const Admin = (props) => {
     useEffect(() => {
         i18n.changeLanguage(lang).then();
     }, [lang]);
+
     return (
         <Suspense fallback={'loading...'}>
             <Switch>

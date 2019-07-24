@@ -15,19 +15,29 @@ export const listStyle = theme => {
         listProgress: {
             height: '4px'
         },
+        row: {
+
+        },
         cell: {
-            height: '100px'
+            height: '100px',
+            width: '150px'
         },
         cellImg: {
             margin: 10,
             width: 60,
             height: 60,
         },
-        checkedIcon:{
+        checkedIcon: {
             color: theme.palette.primary.main
         },
-        checkedIconFalse:{
+        checkedIconFalse: {
             color: theme.palette.secondary.main
+        },
+        cellCenter: {
+            textAlign: 'center'
+        },
+        cellBtn: {
+            width: '100px'
         }
     }
 };

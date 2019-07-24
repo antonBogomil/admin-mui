@@ -4,9 +4,10 @@ import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import LanguagePanel from "./LanguagePanel";
 import {useStyles} from "../styles";
+import {useTranslation} from "react-i18next";
 
 const Header = (props) => {
-    const {handleDrawerToggle} = props;
+    const [t] = useTranslation();
     const classes = useStyles();
     return (
         <>
@@ -14,7 +15,7 @@ const Header = (props) => {
                 <Toolbar>
                     <div className={classes.header}>
                         <Typography variant="h6" noWrap>
-                            Responsive drawer
+                            {t('HELLO', {name: 'Admin'})}
                         </Typography>
                         <div className={classes.headerRight}>
                             <LanguagePanel/>
