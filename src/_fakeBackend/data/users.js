@@ -1,10 +1,10 @@
 export default [
     {
         "id": "1",
-        "name": "Melody Wiza",
-        "img": "https://s3.amazonaws.com/uifaces/faces/twitter/manigm/128.jpg",
+        "name": "Anton B",
+        "img": "https://lh3.googleusercontent.com/-O5hcq_HxUeQ/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcMS0wtlcaf4Utfe3s5D8M79A_G3A.CMID/s96-c/photo.jpg",
         "active": false,
-        "role": "role 1",
+        "role": "ADMIN",
         "dateCreated": "2019-07-01T15:36:16.809Z",
         "password": "123",
         "login": "admin"

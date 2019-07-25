@@ -9,6 +9,8 @@ import {Route, Switch} from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {useStyles} from "../styles";
 import Navigation from "./Navigation";
+import Menu from "./Menu";
+import menu from "../config/menu";
 
 const Dashboard = (props) => {
     const classes = useStyles();
@@ -17,6 +19,7 @@ const Dashboard = (props) => {
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
     }
+
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -35,7 +38,9 @@ const Dashboard = (props) => {
                                  src={"/logo.png"}
                                  className={classes.logo}/>
                         </div>
-                        <Navigation/>
+                        <Navigation>
+                            <Menu {...props} data={menu} parentUrl={props.match.url}/>
+                        </Navigation>
                     </Drawer>
                 </Hidden>
             </div>

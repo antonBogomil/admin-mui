@@ -10,7 +10,6 @@ const allStyles = [
     notificationStyle
 ];
 const combineStyles = (theme) => {
-    console.log(theme);
     return allStyles.reduce((result, style) => {
         return {
             ...result,

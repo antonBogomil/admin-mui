@@ -1,6 +1,7 @@
 import React from 'react';
 import Notification from "./Notification";
 import {useSelector} from "react-redux";
+
 const withNotification = (Component) => {
     return (props) => {
         const notification = useSelector((state) => {

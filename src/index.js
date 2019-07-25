@@ -4,12 +4,20 @@ import * as serviceWorker from './serviceWorker';
 import App from "./App";
 import './index.css';
 import {fakeBackend} from "./_fakeBackend";
-// import install from '@material-ui/styles';
-// install();
+import {Provider} from "react-redux";
+import store from "./store";
+import {history} from './utils/history';
+import {Route, Router} from "react-router-dom";
+import langs from "./settings/langs";
 
 fakeBackend();
-
-ReactDOM.render(<App />, document.getElementById('root'));
+const locales = langs.map((lang) => (lang.code)).join("|");
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={history}>
+            <Route path={`/:locale(${locales})*`} render={(props) => <App {...props}/>}/>
+        </Router>
+    </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -12,14 +12,14 @@ import {useTranslation} from "react-i18next";
 import Divider from "@material-ui/core/Divider";
 import {userActions} from "../../store/actions";
 
-const Navigation = () => {
+const Navigation = (props) => {
     const classes = useStyles();
     const [t] = useTranslation();
     return (
         <div className={classes.navigationContainer}>
             <div>
                 <Divider/>
-                <Menu data={menu} parentUrl={'/admin'}/>
+                {props.children}
             </div>
             <div className={classes.bottomNavigation}>
                 <Divider/>

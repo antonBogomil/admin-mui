@@ -1,9 +1,11 @@
 import {ACTION_TYPES} from "../types";
 import store from '../../store';
-export const changeLang = (id) => {
+import {history} from "../../utils/history";
+
+export const changeLang = (lang = 'en') => {
     store.dispatch({
         type: ACTION_TYPES.CHANGE_LANG,
-        payload: id
+        payload: lang
     })
 };
 export const changeTheme = (name) => {

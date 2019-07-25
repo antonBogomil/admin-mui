@@ -11,15 +11,27 @@ import {useStyles} from "../styles";
 import InputBase from "@material-ui/core/InputBase";
 import LanguageIcon from "@material-ui/icons/Language";
 import IconButton from "@material-ui/core/IconButton";
+import store from "../../store";
+import {history} from "../../utils/history";
 
-const LanguagePanel = () => {
+const LanguagePanel = (props) => {
     const [open, setOpen] = React.useState(false);
     const lang = useSelector((state) => state.site.lang);
     const [t] = useTranslation();
     const classes = useStyles();
 
     function handleChange(e) {
-        changeLang(e.target.value);
+        const selectedLanguage = e.target.value;
+        const current = lang;
+        const currentUrl = (history.location.pathname);
+        let newUrl;
+        if (currentUrl.indexOf(`/${current}/`) !== -1) {
+            newUrl = currentUrl.replace(`/${current}/`, `/${selectedLanguage}/`);
+        } else {
+            newUrl = '/' + selectedLanguage + currentUrl;
+        }
+        history.push(newUrl);
+        changeLang(selectedLanguage);
     }
 
     function handleClose() {
@@ -46,7 +58,7 @@ const LanguagePanel = () => {
                     className={classes.langSelect}
                     IconComponent={() => ''}
                     renderValue={() =>
-                        <IconButton color='inherit' >
+                        <IconButton color='inherit'>
                             <LanguageIcon fontSize={"inherit"}/>
                         </IconButton>}
                     classes={{
