@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import siteReducer from "./site.reducer";
+import settingsReducer from "./settings.reducer";
 import userReducer from "./user.reducer";
 import notificationReducer from './notification.reducer';
 
 export const rootReducer = combineReducers({
-    site: siteReducer,
+    settings: settingsReducer,
     user: userReducer,
     notification: notificationReducer
 });

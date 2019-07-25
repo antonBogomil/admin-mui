@@ -8,10 +8,10 @@ import {Provider} from "react-redux";
 import store from "./store";
 import {history} from './utils/history';
 import {Route, Router} from "react-router-dom";
-import langs from "./settings/langs";
-
+import initI18n from "./i18n";
+import locales from "./settings/locales";
 fakeBackend();
-const locales = langs.map((lang) => (lang.code)).join("|");
+initI18n();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>

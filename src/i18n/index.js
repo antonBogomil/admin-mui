@@ -2,7 +2,9 @@ import i18n from 'i18next';
 import {initReactI18next} from "react-i18next";
 import Backend from 'i18next-xhr-backend';
 import locales from '../_fakeBackend/data/translations';
-export default (lang) => {
+
+const DEFAULT_LOCALE = 'en';
+export default function initI18n() {
     i18n.use(Backend)
         .use(initReactI18next)
         .init({
@@ -16,4 +18,8 @@ export default (lang) => {
             }
         });
     return i18n;
+}
+
+export function changeTranslation(lang = DEFAULT_LOCALE) {
+    return i18n.changeLanguage(lang)
 }
