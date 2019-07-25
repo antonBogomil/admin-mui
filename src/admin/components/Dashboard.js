@@ -11,6 +11,7 @@ import {useStyles} from "../styles";
 import Navigation from "./Navigation";
 import Menu from "./Menu";
 import menu from "../config/menu";
+import removeSlash from "../../utils/removeSlash";
 
 const Dashboard = (props) => {
     const classes = useStyles();
@@ -39,7 +40,7 @@ const Dashboard = (props) => {
                                  className={classes.logo}/>
                         </div>
                         <Navigation>
-                            <Menu {...props} data={menu} parentUrl={props.match.url}/>
+                            <Menu {...props} data={menu} parentUrl={removeSlash(props.match.url)}/>
                         </Navigation>
                     </Drawer>
                 </Hidden>

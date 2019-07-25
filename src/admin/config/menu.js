@@ -15,7 +15,7 @@ import React from "react";
 export default [
     {
         title: 'MENU_HOME',
-        url: '/',
+        url: '',
         icon: <Home/>,
     },
     {
