@@ -10,17 +10,19 @@ import InputBase from "@material-ui/core/InputBase";
 import LanguageIcon from "@material-ui/icons/Language";
 import IconButton from "@material-ui/core/IconButton";
 import {settingsActions} from "../../store/actions";
-import {setLocaleSettings} from "../../services/settings.service";
+import {changeLocaleUrl} from "../../services/settings.service";
 
 const LanguagePanel = (props) => {
     const [open, setOpen] = React.useState(false);
     const locale = useSelector((state) => state.settings.locale);
     const [t] = useTranslation();
     const classes = useStyles();
+
     function handleChange(e) {
         const selectedLanguage = e.target.value;
-        setLocaleSettings(selectedLanguage);
+        settingsActions.changeLocale(selectedLanguage)
     }
+
     function handleClose() {
         setOpen(false);
     }

@@ -1,22 +1,18 @@
-
-import locales from "../settings/locales";
 import {history} from "../utils/history";
-
-export function setLocaleSettings(locale = 'en') {
-    const reg = `/(${locales})`;
+import {DEFAULT_LOCALE_CODE, LOCALE_CODES} from "../admin/config/locales";
+export function changeLocaleUrl(locale = DEFAULT_LOCALE_CODE) {
+    const REG = new RegExp('^\\/(..?)\\/');
     const currentUrl = history.location.pathname;
     let url = currentUrl;
-    const m = currentUrl.match(reg);
-    if (locale!=='en'){
-        if (currentUrl.match(reg)) {
-            url = currentUrl.replace(m[1], locale);
+    const currentCode = currentUrl.match(REG);
+    if (currentCode && currentCode[1]) {
+        if (locale !== DEFAULT_LOCALE_CODE) {
+            url = currentUrl.replace(currentCode[1], locale);
         } else {
-            url = '/' + locale + currentUrl
+            url = currentUrl.replace(`/${currentCode[1]}`, '');
         }
+    } else {
+        url = '/' + locale + currentUrl
     }
-    else {
-        url = currentUrl.replace(m[0], '');
-    }
-    console.log(url);
     history.push(url);
 }

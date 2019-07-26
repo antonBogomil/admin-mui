@@ -43,6 +43,14 @@ export const mainStyle = (theme) => {
         },
         bottomNavigation: {
             backgroundColor: 'rgba(0, 0, 0, 0.08)',
+
+        },
+        bottomNavigationList: {
+            padding: 0
+        },
+        logOutBtn: {
+            paddingTop: theme.spacing(2),
+            paddingBottom: theme.spacing(2),
         },
         content: {
             flexGrow: 1,

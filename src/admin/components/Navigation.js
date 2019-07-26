@@ -23,12 +23,12 @@ const Navigation = (props) => {
             </div>
             <div className={classes.bottomNavigation}>
                 <Divider/>
-                <List>
+                <List className={classes.bottomNavigationList}>
                     <ListItem button
                               className={classNames(classes.menuItem)}
                               onClick={userActions.logout}
                     >
-                        <ListItemIcon className={classes.menuIcon}>
+                        <ListItemIcon className={classNames(classes.menuIcon,classes.logOutBtn)}>
                             <ExitToAppOutlined/>
                         </ListItemIcon>
                         <ListItemText primary={t('LOGOUT')}/>

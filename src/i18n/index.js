@@ -2,15 +2,17 @@ import i18n from 'i18next';
 import {initReactI18next} from "react-i18next";
 import Backend from 'i18next-xhr-backend';
 import locales from '../_fakeBackend/data/translations';
-
-const DEFAULT_LOCALE = 'en';
-export default function initI18n() {
+import {DEFAULT_LOCALE_CODE} from "../admin/config/locales";
+export default function initI18n(locale) {
+    console.log('i18');
     i18n.use(Backend)
         .use(initReactI18next)
         .init({
             // backend: {
             //     loadPath: '/api/locales/{{lng}}.json',
             // },
+
+            // lng: locale,
             resources: locales,
             keySeparator: false, // we do not use keys in form messages.welcome
             interpolation: {
@@ -20,6 +22,6 @@ export default function initI18n() {
     return i18n;
 }
 
-export function changeTranslation(lang = DEFAULT_LOCALE) {
+export function changeTranslation(lang = DEFAULT_LOCALE_CODE) {
     return i18n.changeLanguage(lang)
 }

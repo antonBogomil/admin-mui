@@ -1,21 +1,23 @@
 import React, {useEffect} from 'react';
 import loadable from '@loadable/component'
-import {Route, Switch,} from "react-router-dom";
-import {changeTranslation} from "./i18n";
+import {Route, Router, Switch,} from "react-router-dom";
 import Admin from './admin'
-import {settingsActions} from "./store/actions";
-import {useSelector} from "react-redux";
-
+import {DEFAULT_LOCALE_CODE, LOCALE_CODES} from "./admin/config/locales";
+import {history} from "./utils/history";
+import {Provider} from "react-redux";
+import store from "./store";
 const Site = loadable(() => import('./site'));
-const DEFAULT_LOCALE = 'en';
-const App = (props) => {
-    const localeURL = props.match.params['locale'] || DEFAULT_LOCALE;
-    settingsActions.changeLocale(localeURL);
+const App = () => {
     return (
-        <Switch>
-            <Route path='/:locale*/admin' render={(props) => (<Admin {...props}/>)}/>
-            <Route path='/:locale*' component={Site}/>
-        </Switch>
+        <Provider store={store}>
+            <Router history={history}>
+                <Switch>
+                    <Route path={`/:locale(${LOCALE_CODES})*/:path`} component={(props) => (<Admin {...props}/>)}/>
+                    <Route path={`/`} component={Site}/>
+                    <Route component={() => ("Not found 404")}/>
+                </Switch>
+            </Router>
+        </Provider>
     );
 };
 
