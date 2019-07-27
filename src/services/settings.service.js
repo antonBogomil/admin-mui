@@ -1,7 +1,6 @@
 import {history} from "../utils/history";
 import {DEFAULT_LOCALE_CODE, LOCALE_CODES} from "../admin/config/locales";
 import {changeTranslation} from "../i18n";
-
 export function changeLocaleUrl(locale = DEFAULT_LOCALE_CODE) {
     const REG = new RegExp('^\\/(..?)\\/');
     const currentUrl = history.location.pathname;

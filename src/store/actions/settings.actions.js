@@ -1,5 +1,6 @@
 import {ACTION_TYPES} from "../types";
 import store from '../';
+import {changeTranslation} from "../../i18n";
 
 const initSettings = (locale) => {
     store.dispatch({
@@ -10,6 +11,7 @@ const initSettings = (locale) => {
     });
 };
 const setLocale = (locale) => {
+    changeTranslation(locale);
     store.dispatch({
         type: ACTION_TYPES.CHANGE_LOCALE,
         payload: locale

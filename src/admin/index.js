@@ -14,7 +14,6 @@ const Dashboard = loadable(() => import('./components/Dashboard'));
 const Admin = (props) => {
     const {user} = useSelector(state => state);
     const path = props.match.url;
-    console.log(path);
     return (
         <>
             <PrivateRoute path={`${path}`}

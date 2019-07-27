@@ -7,7 +7,8 @@ import {history} from "./utils/history";
 import {Provider} from "react-redux";
 import store from "./store";
 import Localization from "./Localization";
-
+import initI18n from "./i18n";
+initI18n();
 const Site = loadable(() => import('./site'));
 const App = () => {
     return (
