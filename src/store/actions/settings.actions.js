@@ -9,7 +9,7 @@ const initSettings = (locale) => {
         },
     });
 };
-const changeLocale = (locale) => {
+const setLocale = (locale) => {
     store.dispatch({
         type: ACTION_TYPES.CHANGE_LOCALE,
         payload: locale
@@ -22,7 +22,7 @@ const changeTheme = (name) => {
     }
 };
 export const settingsActions = {
-    changeLocale,
+    setLocale,
     initSettings,
     changeTheme
 };

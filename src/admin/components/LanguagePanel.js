@@ -9,8 +9,8 @@ import {useStyles} from "../styles";
 import InputBase from "@material-ui/core/InputBase";
 import LanguageIcon from "@material-ui/icons/Language";
 import IconButton from "@material-ui/core/IconButton";
-import {settingsActions} from "../../store/actions";
-import {changeLocaleUrl} from "../../services/settings.service";
+import {changeLocale} from "../../services/settings.service";
+import {withRouter} from "react-router-dom";
 
 const LanguagePanel = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -20,7 +20,7 @@ const LanguagePanel = (props) => {
 
     function handleChange(e) {
         const selectedLanguage = e.target.value;
-        settingsActions.changeLocale(selectedLanguage)
+        changeLocale(selectedLanguage);
     }
 
     function handleClose() {

@@ -13,7 +13,8 @@ export const userService = {
 function login(login, password) {
     _httpRequest.post('/login', {login, password}).then((data) => {
         userActions.login(data);
-        history.push('/admin');
+        const path = history.location.pathname.replace('/login', '');
+        history.push(path);
     })
         .catch((err) => {
             notificationActions.showErrorMessage(err.message);
