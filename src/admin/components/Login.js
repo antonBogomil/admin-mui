@@ -9,6 +9,8 @@ import Paper from "@material-ui/core/Paper";
 import LanguagePanel from "./LanguagePanel";
 import {useTranslation} from "react-i18next";
 import {useStyles} from "../styles";
+import withTheme from "./withTheme";
+import theme from '../styles/theme';
 const Login = (props) => {
     const [t] = useTranslation();
     const classes = useStyles();
@@ -82,4 +84,4 @@ const Login = (props) => {
     );
 };
 
-export default Login;
+export default withTheme(Login,theme);

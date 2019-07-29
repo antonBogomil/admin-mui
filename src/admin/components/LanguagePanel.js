@@ -2,35 +2,29 @@ import React from 'react';
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import {useTranslation} from "react-i18next";
-import {useSelector} from "react-redux";
+import {useTranslation,} from "react-i18next";
 import langs from "../../settings/langs";
 import {useStyles} from "../styles";
 import InputBase from "@material-ui/core/InputBase";
 import LanguageIcon from "@material-ui/icons/Language";
 import IconButton from "@material-ui/core/IconButton";
 import {changeLocale} from "../../services/settings.service";
-import {withRouter} from "react-router-dom";
 
 const LanguagePanel = (props) => {
     const [open, setOpen] = React.useState(false);
-    const locale = useSelector((state) => state.settings.locale);
-    const [t] = useTranslation();
+    const [t,i18n] = useTranslation();
     const classes = useStyles();
-
+    const locale = i18n.language;
     function handleChange(e) {
         const selectedLanguage = e.target.value;
         changeLocale(selectedLanguage);
     }
-
     function handleClose() {
         setOpen(false);
     }
-
     function handleOpen() {
         setOpen(true);
     }
-
     return (
         <form autoComplete="off">
             <FormControl className={classes.formControl}>

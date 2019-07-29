@@ -4,8 +4,7 @@ import Backend from 'i18next-xhr-backend';
 import locales from '../_fakeBackend/data/translations';
 import {DEFAULT_LOCALE_CODE} from "../admin/config/locales";
 
-export default function initI18n() {
-    console.log('i18');
+export default function initI18n(locale) {
     i18n.use(Backend)
         .use(initReactI18next)
         .init({
@@ -13,7 +12,7 @@ export default function initI18n() {
             //     loadPath: '/api/locales/{{lng}}.json',
             // },
 
-            lng: DEFAULT_LOCALE_CODE,
+            lng: locale || DEFAULT_LOCALE_CODE,
             resources: locales,
             keySeparator: false, // we do not use keys in form messages.welcome
             interpolation: {

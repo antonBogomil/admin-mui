@@ -5,9 +5,7 @@ import {changeTranslation} from "../../i18n";
 const initSettings = (locale) => {
     store.dispatch({
         type: ACTION_TYPES.INIT_SETTINGS,
-        payload: {
-            locale
-        },
+        payload: locale,
     });
 };
 const setLocale = (locale) => {
