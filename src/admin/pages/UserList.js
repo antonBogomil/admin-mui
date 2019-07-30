@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import wrapped from "../components/wrapped";
 import {LIST_COLUMN_TYPE} from "../../constants/list";
 import List from "../components/list";
+import {Person} from "@material-ui/icons";
 
 const listConfig = {
     fields: [
         // {name: 'id', title: '#', type: LIST_COLUMN_TYPE.NUMBER},
-        {name: 'img', title: 'Picture', type: LIST_COLUMN_TYPE.IMG},
+        {name: 'img', title: 'Picture', type: LIST_COLUMN_TYPE.IMG, default: <Person/>},
         {name: 'name', title: 'Name', type: LIST_COLUMN_TYPE.STRING},
         {name: "role", title: 'Role', type: LIST_COLUMN_TYPE.STRING},
         {name: "active", title: 'Active', type: LIST_COLUMN_TYPE.BOOLEAN},

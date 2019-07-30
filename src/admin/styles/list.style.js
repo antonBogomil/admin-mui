@@ -27,6 +27,10 @@ export const listStyle = theme => {
             width: 60,
             height: 60,
         },
+        listAvatarColor: {
+            color: '#fff',
+            backgroundColor: theme.palette.primary.light
+        },
         checkedIcon: {
             color: theme.palette.primary.main
         },

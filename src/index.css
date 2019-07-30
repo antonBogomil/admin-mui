@@ -1,6 +1,8 @@
 body{
     margin: 0
 }
-a,a:focus{
+a,a:focus {
     text-decoration: none;
+    display: block;
+    color: inherit;
 }

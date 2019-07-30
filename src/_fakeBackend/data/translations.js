@@ -5,6 +5,7 @@ const en = {
         BTN_BACK_TO: "Back to Dashboard",
         BTN_PREV: "Prev",
         BTN_NEXT: "Next",
+        BTN_CREATE: "Create",
         MESSAGE_404: "Sorry, page not found",
         MESSAGE_LOADING_ERROR: "Data loading error",
         MENU_HOME: "Home",
@@ -23,6 +24,7 @@ const en = {
         PAGE_TITLE_HOME: "Home page",
         PAGE_TITLE_USERS: "Users",
         PAGE_TITLE_SETTINGS: "Site settings",
+        PAGE_TITLE_USER_ADD: "New user",
         MENU_UI_DEMO_BTN: "Buttons",
         PAGE_TITLE_MENU: "Menu",
         PAGE_TITLE_PAGES: "List of pages",
@@ -40,7 +42,8 @@ const en = {
         LOGIN: "Login",
         PASSWORD: "Password",
         CANCEL: "Cancel",
-        WRONG_PASSWORD: "Wrong password!"
+        WRONG_PASSWORD: "Wrong password!",
+
     }
 };
 const ru = {
@@ -49,6 +52,7 @@ const ru = {
         BTN_BACK_TO: "Назад к панели управления",
         BTN_PREV: "Предыдущее",
         BTN_NEXT: "Дальше",
+        BTN_CREATE: "Создать",
         MESSAGE_404: "Извините, страница не найдена",
         MESSAGE_LOADING_ERROR: "Возникла проблема при загрузке",
         MENU_HOME: "Главная",
@@ -70,6 +74,7 @@ const ru = {
         PAGE_TITLE_PAGES: "Список страниц",
         PAGE_TITLE_FORM: "Формы",
         PAGE_TITLE_DOC: "Прочитать документацию",
+        PAGE_TITLE_USER_ADD: "Создать пользователя",
         INFO_SELECTED: "Выбрано : ",
         LOGOUT: "Выйти",
         SIGN_IN: "Войти",
@@ -111,7 +116,6 @@ const ua = {
         PAGE_TITLE_FORM: "Forms",
         PAGE_TITLE_DOC: "Read documentation",
         INFO_SELECTED: "Selected : ",
-
     }
 };
 

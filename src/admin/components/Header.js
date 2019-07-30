@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import LanguagePanel from "./LanguagePanel";
 import {useStyles} from "../styles";
 import {useTranslation} from "react-i18next";
+import Profile from "./Profile";
 
 const Header = (props) => {
     const [t] = useTranslation();
@@ -14,9 +15,9 @@ const Header = (props) => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <div className={classes.header}>
-                        <Typography variant="h6" noWrap>
-                            {t('HELLO', {name: 'Admin'})}
-                        </Typography>
+                        <div className='profile'>
+                            <Profile/>
+                        </div>
                         <div className={classes.headerRight}>
                             <LanguagePanel/>
                         </div>

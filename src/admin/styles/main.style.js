@@ -103,6 +103,10 @@ export const mainStyle = (theme) => {
         fixedLangPanel: {
             position: 'fixed',
             right: 10,
+        },
+        whiteIcon: {
+            color: 'inherit',
+            backgroundColor: 'transparent',
         }
 
     }

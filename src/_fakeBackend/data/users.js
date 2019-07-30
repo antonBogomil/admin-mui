@@ -12,7 +12,7 @@ export default [
     {
         "id": "2",
         "name": "Ernie Boehm",
-        "img": "https://s3.amazonaws.com/uifaces/faces/twitter/rmlewisuk/128.jpg",
+        "img": "https://s3.amazonaws.com/uifaces/faces/twitter/rmlewisuk/1281.jpg",
         "active": false,
         "role": "role 2",
         "dateCreated": "2018-08-06T09:28:50.401Z",

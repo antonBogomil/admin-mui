@@ -9,36 +9,37 @@ import Localization from "./Localization";
 import Admin from './admin';
 import initI18n from "./i18n";
 import Login from "./admin/components/Login";
-import PrivateRoute from "./PrivateRoute";
+
+
+const Site = loadable(() => import('./site'));
 
 initI18n();
-const Site = loadable(() => import('./site'));
-// const Admin = loadable(() => import('./admin'));
 const LOCALE_PATH = `/:locale(${LOCALE_CODES})*`;
 const App = () => {
-    return (
-        <Router history={history}>
-            <Switch>
-                <Route path={`/:locale(${LOCALE_CODES})*`} render={
-                    (props) => (
-                        <Provider store={store}>
-                            <Localization {...props}>
-                                <Switch>
-                                    <Route path={`${LOCALE_PATH}/admin/login`}
-                                           component={Login}/>
-                                    <Route path={`${LOCALE_PATH}/admin`}
-                                           component={Admin}/>
-                                    <Route path={`/`}
-                                           component={Site}/>
-                                    <Route render={() => ("Not found 404")}/>
-                                </Switch>
-                            </Localization>
-                        </Provider>
-                    )}
-                />
-            </Switch>
-        </Router>
-    );
+    // return (
+    //     <Router history={history}>
+    //         <Switch>
+    //             <Route path={`/:locale(${LOCALE_CODES})*`} render={
+    //                 (props) => (
+    //                     <Provider store={store}>
+    //                         <Localization {...props}>
+    //                             <Switch>
+    //                                 <Route path={`${LOCALE_PATH}/admin/login`}
+    //                                        component={Login}/>
+    //                                 <Route path={`${LOCALE_PATH}/admin`}
+    //                                        component={Admin}/>
+    //                                 <Route path={`/`}
+    //                                        component={Site}/>
+    //                                 <Route render={() => ("Not found 404")}/>
+    //                             </Switch>
+    //                         </Localization>
+    //                     </Provider>
+    //                 )}
+    //             />
+    //         </Switch>
+    //     </Router>
+    // );
+    return null
 };
 
 

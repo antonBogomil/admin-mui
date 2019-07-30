@@ -7,12 +7,13 @@ import React, {useState} from "react";
 import {useStyles} from "../../styles";
 import dateFormat from 'dateformat';
 import {LIST_COLUMN_TYPE} from "../../../constants/list";
-import Avatar from "@material-ui/core/Avatar";
 import CheckTrueIcon from "@material-ui/icons/CheckBox";
 import CheckFalseIcon from "@material-ui/icons/IndeterminateCheckBox";
 import EditIcon from "@material-ui/icons/Edit"
 import {history} from '../../../utils/history';
 import IconButton from "@material-ui/core/IconButton";
+import Avatar from "../Avatar";
+import {Person} from "@material-ui/icons";
 
 const ListHead = (config) => {
     console.log('haed');
@@ -49,6 +50,7 @@ const ListBody = ({items = [], config: {fields, edit}, rows = 0, loading}) => {
                             <ListCell key={j}
                                       value={val}
                                       type={field.type}
+                                      defaultValue={field.default}
                                       loading={loading}
                                       classes={classes}/>
                         )
@@ -79,7 +81,7 @@ const ListBody = ({items = [], config: {fields, edit}, rows = 0, loading}) => {
         </TableBody>
     )
 };
-const ListCell = ({value, type, loading, empty}) => {
+const ListCell = ({value, type, defaultValue, loading, empty}) => {
     const classes = useStyles();
 
     function getViewByType(value, type) {
@@ -88,7 +90,18 @@ const ListCell = ({value, type, loading, empty}) => {
                 case LIST_COLUMN_TYPE.DATE:
                     return dateFormat(value, "dd-mm-yyyy, HH:MM");
                 case LIST_COLUMN_TYPE.IMG :
-                    return <Avatar alt={value} src={value} className={classes.cellImg}/>;
+                    return (
+                        <Avatar imgSrc={value}
+                                key={value}
+                                classes={{
+                                    colorDefault: classes.listAvatarColor
+                                }}
+                                className={classes.cellImg}
+                                color={"primary"}
+                        >
+                            {defaultValue}
+                        </Avatar>
+                    );
                 case LIST_COLUMN_TYPE.BOOLEAN :
                     return (value ? <CheckTrueIcon className={classes.checkedIcon}/> :
                         <CheckFalseIcon className={classes.checkedIconFalse}/>);
