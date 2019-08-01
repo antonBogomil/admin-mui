@@ -88,4 +88,4 @@ const Login = (props) => {
 	);
 };
 
-export default withTheme(withNotification(Login), theme);
+export default Login;

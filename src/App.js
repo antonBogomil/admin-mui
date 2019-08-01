@@ -9,15 +9,13 @@ import Localization from "./Localization";
 import Admin from './admin';
 import initI18n from "./i18n";
 import Login from "./admin/components/Login";
-import PrivateRoute from "./PrivateRoute";
+import Error from "./Error";
 import {userService} from "./services/user.service";
-
 initI18n();
 const Site = loadable(() => import('./site'));
 // const Admin = loadable(() => import('./admin'));
 const LOCALE_PATH = `/:locale(${LOCALE_CODES})*`;
 const App = () => {
-
 	return (
 		<Router history={history}>
 			<Switch>
@@ -26,6 +24,7 @@ const App = () => {
 						<Provider store={store}>
 							<Localization {...props}>
 								<Switch>
+									<Route path={'/server-error'} component={Error}/>
 									<Route path={`${LOCALE_PATH}/admin`}
 										   component={Admin}/>
 									<Route path={`/`}

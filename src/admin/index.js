@@ -16,7 +16,6 @@ const Admin = (props) => {
     useEffect(()=>{
         userService.auth();
     },[]);
-	console.log(props.match.url);
 	const path = props.match.url;
 	return (
 		<Switch>
