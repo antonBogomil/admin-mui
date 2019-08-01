@@ -1,10 +1,8 @@
 import users from './data/users';
 import {checkAuth} from "./auth";
 import {getPage} from "./utils/utils";
-
 export function fakeBackend() {
     let realFetch = window.fetch;
-
     window.fetch = function (url, options) {
         const RANDOM_DELAY = 200 + 500 * Math.random();
         return new Promise((resolve, reject) => {

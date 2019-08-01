@@ -1,36 +1,48 @@
-
-const BASE_URL = 'http://5cfffd9fd691540014b0e38e.mockapi.io/api/v1';
-
+const BASE_URL = '/api';
+const commonOptions = {
+	headers: new Headers({'content-type': 'application/json'}),
+};
 
 export const _httpRequest = {
-    get, post
+	get, post
 };
 
 function get(url, params) {
-    var esc = encodeURIComponent;
-    // let query = params.length ? '' : '?' + Object.keys(params)
-    //     .map(k => esc(k) + '=' + esc(params[k]))
-    //     .join('&');
-    const requestOptions = {
-        method: "GET",
-        params
-    };
-    return fetch(BASE_URL + url, requestOptions).then(_handleResponse);
+	// var esc = encodeURIComponent;
+	// let query = params.length ? '' : '?' + Object.keys(params)
+	//     .map(k => esc(k) + '=' + esc(params[k]))
+	//     .join('&');
+	const requestOptions = {
+		method: "GET",
+		...commonOptions,
+		params
+	};
+	return fetch(BASE_URL + url, requestOptions).then(fetchHandler)
 }
 
 function post(url, data) {
-    const requestOptions = {
-        method: "POST",
-        body: JSON.stringify(data)
-    };
-    return fetch(BASE_URL + url, requestOptions).then(_handleResponse);
+	const requestOptions = {
+		method: "POST",
+		...commonOptions,
+		body: JSON.stringify(data)
+	};
+	return fetch(BASE_URL + url, requestOptions).then(fetchHandler)
+
 }
 
-function _handleResponse(response) {
-    if (response.ok || response) {
-        return JSON.parse(response);
-    } else {
-        const error = response.statusText || 'get request error!';
-        return Promise.reject(error);
-    }
+function fetchHandler(response) {
+	if (response.ok) {
+		return response.json().then(json => {
+			return Promise.resolve(json);
+		}).catch(err => {
+			return Promise.resolve(response);
+		});
+
+	} else {
+		return response.json().catch(err => {
+			throw new Error(response.statusText);
+		}).then(json => {
+			throw new Error(json.message);
+		});
+	}
 }

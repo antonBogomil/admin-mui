@@ -10,7 +10,7 @@ const store = createStore(
 );
 
 const unsubscribe = store.subscribe(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
+    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
 });
 // unsubscribe();
 export default store;

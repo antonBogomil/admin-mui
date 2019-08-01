@@ -3,11 +3,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
 import './index.css';
-import {fakeBackend} from "./_fakeBackend";
-
-
-
-fakeBackend();
+// import {fakeBackend} from "./_fakeBackend";
+// fakeBackend();
 
 
 

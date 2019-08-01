@@ -20,7 +20,6 @@ const Dashboard = (props) => {
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
     }
-
     return (
         <div className={classes.root}>
             <CssBaseline/>
