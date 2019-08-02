@@ -16,11 +16,13 @@ Backend on Node.js here: [wcms-server](https://github.com/antonBogomil/wcms-serv
 
 Login page (login - admin,password - 123) :
 
-![muiAdmin-login](https://github.com/antonBogomil/admin-mui/blob/master/public/screen-login.png)
+![muiAdmin-login](https://github.com/antonBogomil/admin-mui/blob/screens/public/screen-login.png)
 
 Dashboard page:
 
-![muiAdmin](https://github.com/antonBogomil/admin-mui/blob/master/public/screen-dashboard.png)
+![muiAdmin](https://github.com/antonBogomil/admin-mui/blob/master/screens/screen-dashboard.png)
 
+List page: 
 
+![muiList](https://github.com/antonBogomil/admin-mui/blob/master/screens/muiList.png)
 
