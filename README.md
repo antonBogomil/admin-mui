@@ -16,7 +16,7 @@ Backend on Node.js here: [wcms-server](https://github.com/antonBogomil/wcms-serv
 
 Login page (login - admin,password - 123) :
 
-![muiAdmin-login](https://github.com/antonBogomil/admin-mui/blob/screens/screens/screen-login.png)
+![muiAdmin-login](https://github.com/antonBogomil/admin-mui/blob/master/screens/screen-login.png)
 
 Dashboard page:
 
