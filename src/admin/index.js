@@ -29,7 +29,7 @@ const Admin = (props) => {
 						  hasAccess={user}
 						  redirectTo={`${path}/login`}
 			/>
-
+			{/*<Dashboard {...props}/>*/}
 		</Switch>
 	);
 };

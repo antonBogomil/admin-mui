@@ -11,6 +11,7 @@ import initI18n from "./i18n";
 import Login from "./admin/components/Login";
 import Error from "./Error";
 import {userService} from "./services/user.service";
+
 initI18n();
 const Site = loadable(() => import('./site'));
 // const Admin = loadable(() => import('./admin'));
@@ -24,7 +25,8 @@ const App = () => {
 						<Provider store={store}>
 							<Localization {...props}>
 								<Switch>
-									<Route path={'/server-error'} component={Error}/>
+									<Route path={'/server-error'}
+										   component={Error}/>
 									<Route path={`${LOCALE_PATH}/admin`}
 										   component={Admin}/>
 									<Route path={`/`}

@@ -20,12 +20,13 @@ export function listReducer(state, action) {
                 loading: false,
                 count: action.payload.count,
                 items: action.payload.items,
+                sort: action.payload.sort,
                 rows: action.payload.rows,
             };
         case LIST_ACTIONS.DATA_ERROR:
             return {
                 ...state,
-                error: true,
+                error: action.payload,
                 loading: false,
             };
         case LIST_ACTIONS.PAGE_CHANGE:

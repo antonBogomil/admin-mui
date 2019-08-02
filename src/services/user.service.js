@@ -20,6 +20,8 @@ function login(login, password) {
         } else if (data.message) {
             notificationActions.showErrorMessage(data.message);
         }
+    }).catch((e)=>{
+        notificationActions.showErrorMessage(e.message);
     })
 }
 
@@ -32,6 +34,7 @@ function logout() {
 function auth() {
     _httpRequest.get('/auth')
         .then((data) => {
+
             if (data.user) {
                 userActions.login(data.user)
             } else {

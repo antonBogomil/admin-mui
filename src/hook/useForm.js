@@ -7,7 +7,6 @@ export const useForm = (initState, callback, validationRules) => {
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback && callback(values);
-            console.log('Form has been submitted successfully!');
         }
     }, [errors]);
     const handleSubmit = (event) => {
