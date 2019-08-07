@@ -19,17 +19,17 @@ const Admin = (props) => {
 	const path = props.match.url;
 	return (
 		<Switch>
-            <PrivateRoute path={`${path}/login`}
-                          hasAccess={!user}
-                          component={Login}
-                          redirectTo={`${path}`}
-            />
-			<PrivateRoute path={`${path}`}
-						  component={Dashboard}
-						  hasAccess={user}
-						  redirectTo={`${path}/login`}
-			/>
-			{/*<Dashboard {...props}/>*/}
+            {/*<PrivateRoute path={`${path}/login`}*/}
+            {/*              hasAccess={!user}*/}
+            {/*              component={Login}*/}
+            {/*              redirectTo={`${path}`}*/}
+            {/*/>*/}
+			{/*<PrivateRoute path={`${path}`}*/}
+			{/*			  component={Dashboard}*/}
+			{/*			  hasAccess={user}*/}
+			{/*			  redirectTo={`${path}/login`}*/}
+			{/*/>*/}
+			<Dashboard {...props}/>
 		</Switch>
 	);
 };

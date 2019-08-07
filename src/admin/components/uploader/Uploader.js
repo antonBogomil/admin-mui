@@ -1,38 +1,87 @@
-import React from 'react';
-import Button from "@material-ui/core/Button";
+import React, {useCallback} from 'react';
 import {withStyles} from "@material-ui/styles";
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import {mainStyle} from "../../styles/main.style";
-import Fab from "@material-ui/core/Fab";
-import DeleteIcon from '@material-ui/icons/Delete';
-import ImageIcon from '@material-ui/icons/Image';
+import uploaderStyle from "./uploader.style";
+import {useDropzone} from 'react-dropzone'
+import {Paper, RootRef} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import Paper from "@material-ui/core/Paper";
-import {Grid} from "@material-ui/core";
+import {Delete, PhotoCamera} from "@material-ui/icons";
+import withTheme from "../../../utils/withTheme";
+import theme from "../../styles/theme";
+import ImageLoader from "../ImageLoader";
+import ImageBroken from "@material-ui/icons/BrokenImage"
+import classNames from 'classnames'
+
 const Uploader = ({classes}) => {
-    return (
-        <Paper>
-            <div className={classes.uploadImageContainer}>
-                <input
-                    accept="image/*"
-                    className={classes.hidden}
-                    id="button-file"
-                    multiple
-                    type="file"
-                />
-                <label htmlFor="button-file">
-                    <Fab component={'span'} size={"large"} color="primary">
-                        <CloudUploadIcon/>
-                    </Fab>
-                </label>
-            </div>
-            <div>
-                <IconButton aria-label="Delete"  size={"medium"}>
-                    <DeleteIcon fontSize="default" />
-                </IconButton>
-            </div>
-        </Paper>
-    );
+	const img = null;
+	const onDrop = useCallback(acceptedFiles => {
+		const reader = new FileReader();
+		reader.onabort = () => console.log('file reading was aborted');
+		reader.onerror = () => console.log('file reading has failed');
+		reader.onload = () => {
+			const binaryStr = reader.result;
+		}
+		acceptedFiles.forEach(file => reader.readAsBinaryString(file));
+	}, []);
+
+	function imageLoad(status) {
+		console.log(status);
+	}
+
+	const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+	const {ref, ...rootProps} = getRootProps();
+	return (
+		<RootRef rootRef={ref}>
+			<Paper className={classes.paper}>
+				<div className={classes.container}>
+					<input {...getInputProps()} />
+					{
+						img ? <>
+								<div className={classes.scene}>
+									<ImageLoader
+										className={classes.img}
+										callback={imageLoad}
+										src={img}
+										falseComponent={<ImageBroken
+											className={classes.notFoundImg}
+										/>}
+									/>
+									{isDragActive && 'Here'}
+								</div>
+								<div className={classes.toolbar}>
+									<IconButton
+										color="primary"
+										className={classes.button}
+										aria-label="upload picture"
+										component="span"
+										{...rootProps}
+									>
+										<PhotoCamera fontSize={'large'}/>
+									</IconButton>
+									<IconButton
+										className={classes.buttonDelete}
+										aria-label="upload picture"
+										component="span"
+									>
+										<Delete fontSize={'large'}/>
+									</IconButton>
+								</div>
+
+							</> :
+							<div className={classNames(classes.scene, classes.sceneEmpty)} {...rootProps}>
+								<IconButton
+									color="primary"
+									className={classes.button}
+									aria-label="upload picture"
+									component="span"
+								>
+									<PhotoCamera fontSize={'large'}/>
+								</IconButton>
+							</div>
+					}
+				</div>
+			</Paper>
+		</RootRef>
+	);
 };
 
-export default withStyles(mainStyle)(Uploader);
+export default withTheme(withStyles(uploaderStyle)(Uploader), theme)
